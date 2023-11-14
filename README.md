@@ -58,28 +58,32 @@ This is a solution to the [Base Apparel coming soon page challenge on Frontend M
 
 * **Email validation**<br>
     There are multiple ways how to validate the email user entered. React itself has some validation for input type="email". If you entered e.g. 'somename' and click submit button, action won't be finish due to invalid email value. The user will be informed about error via message in the tooltip — "Please include an '@' in the email address. 'somename' is missing an '@'. However, validation can be implemented in some more complex way using input type="text":
-        We need two states — email & error. Along with that, we will have two functions — 'emailChange' & 'isValidEmail'. Given that we want the value of input to be whatever user entered, then we gonna use 'onChange' event. With every change of user input, the onChange event will be fired. When this event occurs, the 'emailChange' function will be invoked, as we implemented. With each new invoking, this function will set the new value for the 'email' state. All of this is needed for setting dynamic value for the 'value' attribute of the input. 
-        Next step is to check the value user entered. When form submitted, the 'onSubmit' event should be fired. This event will invoke function 'forwardEmail'. Within this function, we gonna use the previously mentioned function 'isValidEmail'. The way this function works is that it will check (test) if the current value of input (our 'email' state) satisfied the 'regex' expression. The 'regex' is a sequence of characters that specifies a match pattern in text. There is not unique pattern for email. The one used for this challenge is taken from the 'https://regexr.com/3e48o' site. 
-        ```/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/```
-        Explanation:
-            ```/``` open —> indicates the start of a regular expression
-            ```^``` Beggining -> Matches the beginning of the string, or the beginning of a line if the multiline flag (m) is enabled.
-            ```[\w-\.]``` Character set -> match any character in the set
-                ```\w``` word -> matches any word character (alphanumeric & underscore)
-                ```-``` character -> matches a "-" character 
-                ```\.``` escaped character -> matches a "." character
-            ```+``` quantifier -> match 1 or more of te preceding token
-            ```@``` character -> matches a "@" character
-            ```([\w-]+\.)``` capturing group -> groups multiple tokens together and creates a caapture group for extracting a substring or using a backreference.
-            ```{2, 4}``` quantifier -> match between 2 and 4 of the preceding token.
-            ```$``` end -> matches the end fo the string, or the end of a line if the multiline flag (m) is enabled
-            ```/``` close -> indicated the end of a regular expression and the start of expression flags.
-        If our value matches the given criteria, this function (isValidEmail) will return 'true'. Then, we can reset our 'email' value to be empty ('') and as optional to log something to the console. Otherwise, we need to set new value for the 'error' state (e.g. 'Email is invalid'). This is important for 'conditional rendering' since dependencing on the 'error' value we will display or not the warning message. 
-        ```{error && <p className="content__warningMsg">{error}</p>}```
-        Since the initial value for the 'error' state is 'null', this paragraph won't be display unless value for this state change. With the usage of regex, we also provided that empty field will be also considered as an error. This is due to 'isValidEmail' that check if entered value meet the criteria. Empty string is also viewed as something that did not meet the criteria pattern. However, if we want to distinguish the states when input is empty and invalid, we can use 'else if'. Depending on the type of error, we will change value for the 'error' state.
-            EMPTY — setError('Required field');
-            INVALID  — setError('Please provide a valid email');
-        In addition, we need 'useRef' for 'errorIcon' since its hidden by default. When either 'empty' or 'invalid' error occurs, it should be displayed. Since the 'ref' can't be forwarded as a tipical prop, we need to use 'forwardRef'.
+    We need two states — email & error. Along with that, we will have two functions — 'emailChange' & 'isValidEmail'. Given that we want the value of input to be whatever user entered, then we gonna use 'onChange' event. With every change of user input, the onChange event will be fired. When this event occurs, the 'emailChange' function will be invoked, as we implemented. With each new invoking, this function will set the new value for the 'email' state. All of this is needed for setting dynamic value for the 'value' attribute of the input. <br>
+    Next step is to check the value user entered. When form submitted, the 'onSubmit' event should be fired. This event will invoke function 'forwardEmail'. Within this function, we gonna use the previously mentioned function 'isValidEmail'. The way this function works is that it will check (test) if the current value of input (our 'email' state) satisfied the 'regex' expression. The 'regex' is a sequence of characters that specifies a match pattern in text. There is not unique pattern for email. The one used for this challenge is taken from the 'https://regexr.com/3e48o' site. <br>
+  ```console
+    /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/
+  ```
+  * Explanation: <br>
+    * ```/``` open —> indicates the start of a regular expression <br>
+    * ```^``` Beggining -> Matches the beginning of the string, or the beginning of a line if the multiline flag (m) is enabled. <br>
+    *  ```[\w-\.]``` Character set -> match any character in the set <br>
+      * ```\w``` word -> matches any word character (alphanumeric & underscore) <br>
+      * ```-``` character -> matches a "-" character  <br>
+      * ```\.``` escaped character -> matches a "." character <br>
+    * ```+``` quantifier -> match 1 or more of te preceding token <br>
+    * ```@``` character -> matches a "@" character <br>
+    * ```([\w-]+\.)``` capturing group -> groups multiple tokens together and creates a caapture group for extracting a substring or using a backreference. <br>
+    * ```{2, 4}``` quantifier -> match between 2 and 4 of the preceding token. <br>
+    * ```$``` end -> matches the end fo the string, or the end of a line if the multiline flag (m) is enabled <br>
+    * ```/``` close -> indicated the end of a regular expression and the start of expression flags. <br>
+  * If our value matches the given criteria, this function (isValidEmail) will return 'true'. Then, we can reset our 'email' value to be empty ('') and as optional to log something to the console. Otherwise, we need to set new value for the 'error' state (e.g. 'Email is invalid'). This is important for 'conditional rendering' since dependencing on the 'error' value we will display or not the warning message.  <br>
+    ```console
+      {error && <p className="content__warningMsg">{error}</p>}
+    ```
+  * Since the initial value for the 'error' state is 'null', this paragraph won't be display unless value for this state change. With the usage of regex, we also provided that empty field will be also considered as an error. This is due to 'isValidEmail' that check if entered value meet the criteria. Empty string is also viewed as something that did not meet the criteria pattern. However, if we want to distinguish the states when input is empty and invalid, we can use 'else if'. Depending on the type of error, we will change value for the 'error' state. <br>
+    * EMPTY — setError('Required field'); <br>
+    * INVALID  — setError('Please provide a valid email'); <br>
+  * In addition, we need 'useRef' for 'errorIcon' since its hidden by default. When either 'empty' or 'invalid' error occurs, it should be displayed. Since the 'ref' can't be forwarded as a tipical prop, we need to use 'forwardRef'.
 
     * Card.jsx
         ```jsx
