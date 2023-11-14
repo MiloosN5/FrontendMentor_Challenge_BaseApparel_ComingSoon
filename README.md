@@ -36,8 +36,8 @@ This is a solution to the [Base Apparel coming soon page challenge on Frontend M
 
 ### Links
 
-- Solution URL: [My solution URL](https://github.com/MiloosN5/FrontendMentor_FourCardFeatureSectionMaster/blob/main/README.md)
-- Live Site URL: [My live site URL](https://miloosn5.github.io/FrontendMentor_FourCardFeatureSectionMaster/)
+- Solution URL: [My solution URL](https://github.com/MiloosN5/FrontendMentor_Challenge_BaseApparel_ComingSoon)
+- Live Site URL: [My live site URL](https://miloosn5.github.io/FrontendMentor_Challenge_BaseApparel_ComingSoon/)
 
 
 ## My process
