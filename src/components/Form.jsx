@@ -44,7 +44,7 @@ const Form = () => {
                 onChange={(e) => emailChange(e)} value={email}
             />
             <ErrorIcon ref={ref1} />
-            <button className="content__submit">
+            <button className="content__submit" aria-label="Submit">
                 <ArrowIcon />
             </button>
             {error && <p className="content__warningMsg">{error}</p>}

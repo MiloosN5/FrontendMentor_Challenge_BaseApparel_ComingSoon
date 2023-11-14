@@ -3,7 +3,7 @@ const Header = () => {
     <header className="header">
         <div className="header__wrapper">
           <div className="header__logo">
-            <a href="/">
+            <a href="/" aria-label="logo of the site, return to the home page">
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 158 33">
                 <defs>
                   <linearGradient id="a1" x1="0%" y1="0%" y2="100%">
