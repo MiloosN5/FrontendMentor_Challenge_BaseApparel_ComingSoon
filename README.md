@@ -85,7 +85,7 @@ This is a solution to the [Base Apparel coming soon page challenge on Frontend M
     * INVALID  — setError('Please provide a valid email'); <br>
   * In addition, we need 'useRef' for 'errorIcon' since its hidden by default. When either 'empty' or 'invalid' error occurs, it should be displayed. Since the 'ref' can't be forwarded as a tipical prop, we need to use 'forwardRef'.
 
-    * Card.jsx
+    * Form.jsx
         ```jsx
             const isValidEmail = email => {
                 return regexEmail.test(email);
