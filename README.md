@@ -160,6 +160,7 @@ This is a solution to the [Base Apparel coming soon page challenge on Frontend M
 - build (predeploy) app for the production - create dist folder (see package.json)
     * ```npm run build```
 - deploy app to the GitHub Pages (see package.json)
+    * ```npm install gh-pages -D```
     * ```gh-pages -d dist```
 
 **SASS/SCSS**
