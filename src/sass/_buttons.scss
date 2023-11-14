@@ -1,0 +1,26 @@
+@use 'sass:map';
+@use 'variables' as v;
+@use 'mixins' as m;
+
+.content {
+  &__submit {
+    z-index: 20;
+    @include m.flexbox('row', 'jc-center', 'ai-center');
+    @include m.container($w: 'w-submit');
+    @include m.position($p: 'absolute', $t: 't-0', $r: 'r-0', $b: 'b-0');
+    @include m.linearGradient('Linear-2');
+    @include m.border('none', 'br-30px');
+    @include m.boxShadow('submit');
+  
+    &:hover {
+      @include m.linearGradient('Linear-3');
+      @include m.boxShadow('submit--hover');
+    }
+  }
+}
+
+@include m.breakpoint-down('small') {
+  .content__submit {
+    width: map.get(v.$width, 'w-submit--sm');
+  }
+}

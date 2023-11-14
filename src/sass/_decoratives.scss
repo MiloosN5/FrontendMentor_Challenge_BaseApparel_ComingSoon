@@ -1,0 +1,14 @@
+@use 'mixins' as m;
+
+.decorativeImg {
+  display: none;
+  @include m.position($p: 'absolute', $l: 'l-0', $b: 'b-0');
+  @include m.container($w: 'w-100%');
+  z-index: -1;
+}
+
+@include m.breakpoint-up('large') {
+  .decorativeImg {
+    display: block;
+  }
+}

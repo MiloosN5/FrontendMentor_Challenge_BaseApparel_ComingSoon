@@ -1,0 +1,17 @@
+@use 'mixins' as m;
+
+.content {
+  @include m.padding($inline: 'section-inline--sm', $block: 'section-block--sm');
+  @include m.position($p: 'relative');
+
+  &__wrapper {
+    @include m.container($maxW: 'mw-container');
+    @include m.margin($inline: 'auto');
+  }
+}
+
+@include m.breakpoint-up('small') {
+  .content {
+    @include m.padding($inline: 'section-inline--lg', $block: 'section-block--lg');
+  }
+}

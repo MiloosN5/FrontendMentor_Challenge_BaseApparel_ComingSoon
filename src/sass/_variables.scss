@@ -1,0 +1,132 @@
+@use 'sass:map';
+@use 'functions' as f;
+
+$breakpoints: (
+    'small': f.em(300),
+    'large': f.em(778),
+);
+
+$colors: (
+    //------------------ Primary ------------------//
+    'Desaturated-Red-1': hsl(0, 36%, 70%),
+    'Desaturated-Red-2': hsl(0, 36%, 85%),
+    'Soft-Red': hsl(0, 93%, 68%),
+    'Soft-Red-2': hsl(0, 74%, 74%),
+    //------------------ Neutral ------------------//
+    'Dark-Grayish-Red': hsl(0, 6%, 24%),
+    //------------------ Gradients ------------------//
+    'Linear-1': (135deg, hsl(0, 0%, 100%), hsl(0, 100%, 98%)),
+    'Linear-2': (135deg, hsl(0, 80%, 86%), hsl(0, 74%, 74%)),
+    'Linear-3': (135deg, hsl(0, 80%, 92%), hsl(0, 74%, 89%)),
+    //------------------ default ------------------//
+    'bg-transparent': transparent
+);
+
+$width: (
+    'w-auto': auto,
+    'w-submit': clamp(f.rem(64), -1.31rem + 8.5vw, f.rem(98)), // fluid_1
+    'w-submit--sm': clamp(f.rem(40), -0.5rem + 24vw, f.rem(64)), // fluid_4
+    'w-100%': 100%,
+    'w-logo': clamp(f.rem(100), 3.77rem + 8.31vw, f.rem(160)), // fluid_3
+    'w-error': f.rem(24),
+    'w-arrow': f.rem(12),
+    'mw-none': none,
+    'mw-container': f.rem(1000)
+);
+
+$height: (
+    'h-auto': auto,
+    'h-100%': 100%,
+    'h-form': clamp(f.rem(48), 2.67rem + 1.11vw, f.rem(56)), // fluid_3
+    'minh-auto': auto,
+    'minh-100vh': 100vh
+);
+
+$flexbox: (
+    'row': row,
+    'column': column,
+    'jc-start': start,
+    'jc-center': center,
+    'ai-start': start,
+    'ai-center': center
+);
+
+$grid: (
+    'grid-cols-main--sm': 1fr,
+    'grid-cols-main--lg': minmax(f.rem(400), 1fr) fit-content(f.rem(610)),
+    'grid-rows-main--lg': auto 1fr,
+    'grid-rows-none': none
+);
+
+$position: (
+    'relative': relative,
+    'absolute': absolute,
+    't-0': 0,
+    't-auto': auto,
+    'r-0': 0,
+    'r-auto': auto,
+    'r-errorForm': calc(clamp(f.rem(64), -1.31rem + 8.5vw, f.rem(98)) + f.rem(16)), // fluid_1
+    'b-0': 0,
+    'b-auto': auto,
+    'l-0': 0,
+    'l-auto': auto
+);
+
+$border: (
+    'none': none,
+    'b-input': f.rem(1) solid map.get($colors, 'Desaturated-Red-2'),
+    'b-input--focusVisible': f.rem(2) solid map.get($colors, 'Soft-Red'),
+    'br-0': 0,
+    'br-30px': f.rem(30)
+);
+
+$boxShadow: (
+    'submit': 0 f.rem(12) f.rem(18) f.rem(6) hsl(0, 60%, 92%),
+    'submit--hover': 0 f.rem(14) f.rem(30) f.rem(-2) hsl(0, 60%, 75%)
+);
+
+$padding: (
+    'inline-0': 0,
+    'block-0': 0,
+    'header-block': clamp(f.rem(32), -3rem + 8vw, f.rem(64)), // fluid_1
+    'section-inline--sm': f.rem(16),
+    'section-inline--lg': clamp(f.rem(32), -18.63rem + 33vw, f.rem(164)) clamp(f.rem(32), -27.69rem + 47.5vw, f.rem(222)), // fluid_1
+    'section-block--sm': f.rem(30),
+    'section-block--lg': clamp(f.rem(65), 3.28rem + 1.25vw, f.rem(70)), // fluid_1
+    'h1-block': 0 clamp(f.rem(16), 0.67rem + 1.11vw, f.rem(24)), // fluid_3
+    'desc-block': 0 clamp(f.rem(36), 2.0rem + 0.83vw, f.rem(42)), // fluid_3
+    'input-inline': (clamp(f.rem(22), -0.19rem + 2.5vw, f.rem(32)) (clamp(f.rem(68), -1.06rem + 8.5vw, f.rem(102)))), // fluid_1
+    'input-inline--sm': (clamp(f.rem(16), 0.25rem + 6vw, f.rem(22)) clamp(f.rem(44), -0.25rem + 24vw, f.rem(68))), // fluid_4
+    'warning-inline': clamp(f.rem(22), -0.19rem + 2.5vw, f.rem(32)) 0, // fluid_1
+    'warning-inline--sm': clamp(f.rem(16), 0.25rem + 6vw, f.rem(22)) 0, // fluid_4
+    'warning-block': f.rem(10)
+);
+
+$margin: (
+    'auto': auto 
+);
+
+$font: (
+    'fs-h1': clamp(f.rem(43), 1.65rem + 3.46vw, f.rem(68)), // fluid_3
+    'fs-h1--sm': clamp(f.rem(30), 0.25rem + 13vw, f.rem(43)), // fluid_4
+    'fs-desc': clamp(f.rem(14), 0.79rem + 0.28vw, f.rem(16)), // fluid_3
+    'fs-desc--sm': clamp(f.rem(12), 0.5rem + 2vw, f.rem(14)), // fluid_4
+    'fs-input': clamp(f.rem(14), 0.79rem + 0.28vw, f.rem(16)), // fluid_3
+    'fs-input--placeholder': clamp(f.rem(14), 0.79rem + 0.28vw, f.rem(16)), // fluid_3
+    'fs-warning': f.rem(13),
+    'lh-normal': normal,
+    'lh-h1': clamp(f.rem(42), 1.55rem + 3.6vw, f.rem(68)), // fluid_3
+    'lh-h1--sm': clamp(f.rem(30), 0.38rem + 12vw, f.rem(42)), // fluid_4
+    'lh-desc': clamp(f.rem(21), 1.06rem + 0.83vw, f.rem(27)), // fluid_3
+    'lh-desc--sm': clamp(f.rem(18), 0.75rem + 3vw, f.rem(21)), // fluid_4
+    'ls-normal': normal,
+    'ls-h1': 0.2em,
+    'ls-h1--mark': 0.22em,
+    'ls-warning': -0.008em,
+    'fw-300': 300,
+    'fw-400': 400,
+    'fw-600': 600,
+    'ta-left': left,
+    'ta-center': center,
+    'ta-right': right
+);

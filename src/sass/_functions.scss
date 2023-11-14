@@ -1,0 +1,25 @@
+@use 'sass:math';
+
+// Throw an error if the paremeter has a unit
+@function rem($pixel) {
+    // If $pixel has not a unit, divide $pixel by 16 to return rems
+    @if math.is-unitless($pixel) {
+        @return math.div($pixel, 16) + rem;
+    } @else {
+        // Otherwise (else) throw an error
+        @error 'Don\'t use units when using the rem() function; only numbers';
+
+    }
+}
+
+@function em($pixel) {
+    // If $pixel has not a unit, divide $pixel by 16 to return rems
+    @if math.is-unitless($pixel) {
+        @return math.div($pixel, 16) + em;
+    } @else {
+        // Otherwise (else) throw an error
+        @error 'Don\'t use units when using the em() function; only numbers';
+
+    }
+}
+

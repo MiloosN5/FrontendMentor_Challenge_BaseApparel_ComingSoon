@@ -1,0 +1,12 @@
+@use 'mixins' as m;
+
+.main {
+  @include m.grid($cols: 'grid-cols-main--sm');
+  @include m.container($h: 'h-100%');
+}
+
+@include m.breakpoint-up('large') {
+  .main {
+    @include m.grid('grid-cols-main--lg', 'grid-rows-main--lg');
+  }
+}

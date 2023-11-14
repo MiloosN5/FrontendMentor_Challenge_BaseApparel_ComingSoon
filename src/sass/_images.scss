@@ -1,0 +1,60 @@
+@use 'mixins' as m;
+
+//------------------------------------------ Header ------------------------------------------//
+
+.header {
+  &__logo {
+    svg {
+      @include m.container($w: 'w-logo');
+    }
+  }
+}
+
+//------------------------------------------ Image ------------------------------------------//
+
+.image {
+  picture {
+    @include m.container($w: 'w-100%');
+
+    img {
+      @include m.container($w: 'w-100%');
+    }
+  }
+}
+
+@include m.breakpoint-up('large') {
+  .image {
+    picture {
+      @include m.container($h: 'h-100%', $minH: 'minh-100vh');
+
+      img {
+        object-fit: cover;
+        @include m.container($w: 'w-100%', $h: 'h-100%', $minH: 'minh-100vh');
+      }
+    }
+  }
+}
+
+//------------------------------------------ Content ------------------------------------------//
+
+.content {
+  &__error {
+    @include m.margin($block: 'auto');
+    @include m.position($p: 'absolute', $t: 't-0', $r: 'r-errorForm', $b: 'b-0');
+    @include m.container($w: 'w-error');
+  }
+}
+
+@include m.breakpoint-down('small') {
+  .content {
+    &__error {
+      display: none;
+    }
+  }
+}
+
+//------------------------------------------ Arrow ------------------------------------------//
+
+.arrow {
+  @include m.container($w: 'w-arrow');
+}

@@ -1,0 +1,67 @@
+@use 'sass:map';
+@use 'variables' as v;
+@use 'mixins' as m;
+@use 'utilities' as u;
+
+//------------------------------------------ Google Fonts ------------------------------------------//
+
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300;400;600&display=swap');
+
+//------------------------------------------ Content ------------------------------------------//
+
+.content {
+  &__title {
+    text-transform: uppercase;
+    @include m.font($size: 'fs-h1', $weight: 'fw-600', $lh: 'lh-h1', $ls: 'ls-h1', $align: 'ta-center', $color: 'Dark-Grayish-Red');
+    @include m.padding($block: 'h1-block');
+
+    span {
+      text-transform: uppercase;
+      @include m.font($size: 'fs-h1', $weight: 'fw-300', $ls: 'ls-h1--mark', $align: 'ta-center', $color: 'Desaturated-Red-1');
+    }
+  }
+
+  &__description {
+    @include m.font($size: 'fs-desc', $lh: 'lh-desc', $align: 'ta-center', $color: 'Desaturated-Red-1');
+    @include m.padding($block: 'desc-block');
+  }
+
+  &__warningMsg {
+    @include m.font($size: 'fs-warning', $weight: 'fw-600', $ls: 'ls-warning', $color: 'Soft-Red-2');
+    @include m.padding($inline: 'warning-inline', $block: 'warning-block');
+  }
+}
+
+@include m.breakpoint-up('large') {
+
+  .content {
+    &__title, &__title > span {
+      text-align: left;
+      word-wrap: initial;
+    }
+
+    &__description {
+      text-align: left;
+      letter-spacing: 0.005em;
+    }
+  }
+}
+
+@include m.breakpoint-down('small') {
+
+  .content {
+    &__title, &__title > span {
+      font-size: map.get(v.$font, 'fs-h1--sm'); // 200 -> 300 (30 -> 43)
+      line-height: map.get(v.$font, 'lh-h1--sm'); // 200 -> 300 (30 -> 42)
+    }
+
+    &__description {
+      font-size: map.get(v.$font, 'fs-desc--sm'); // 200 -> 300 (12 -> 14)
+      line-height: map.get(v.$font, 'lh-desc--sm');
+    }
+  
+    &__warningMsg {
+      padding-inline: map.get(v.$padding, 'warning-inline--sm'); // 16 -> 22, 44 -> 68 (200 -> 300)
+    }
+  }
+}

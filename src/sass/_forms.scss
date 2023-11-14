@@ -1,0 +1,38 @@
+@use 'sass:map';
+@use 'variables' as v;
+@use 'mixins' as m;
+@use 'utilities' as u;
+
+.content {
+  &__email {
+    @include m.container($w: 'w-100%', $h: 'h-form');
+    @include m.position($p: 'relative');
+
+    input {
+      z-index: 5;
+      @include m.container($w: 'w-100%', $h: 'h-100%');
+      @include m.border('b-input', 'br-30px');
+      @include m.padding($inline: 'input-inline');
+      @include m.font($size: 'fs-input', $color: 'Dark-Grayish-Red');
+
+      &::placeholder {
+        @include m.font($size: 'fs-input--placeholder', $color: 'Desaturated-Red-2');
+      }
+
+      &:focus-visible {
+        @extend .outline_none;
+        @include m.border('b-input--focusVisible', 'br-30px');
+      }
+    }
+  }
+}
+
+@include m.breakpoint-down('small') {
+  .content {
+    &__email {
+      input {
+        padding-inline: map.get(v.$padding, 'input-inline--sm'); 
+      }
+    }
+  }
+}

@@ -1,0 +1,75 @@
+@use 'sass:map';
+@use 'variables' as v;
+
+@mixin breakpoint-up($size) {
+    @media (min-width: map-get(v.$breakpoints, $size)) {
+        @content;
+    }
+}
+
+@mixin breakpoint-down($size) {
+    @media (max-width: map-get(v.$breakpoints, $size)) {
+        @content;
+    }
+}
+
+@mixin flexbox($dir, $jc: 'js-start', $ai: 'ai-start') {
+    display: flex;
+    flex-direction: map.get(v.$flexbox, $dir);
+    justify-content: map.get(v.$flexbox, $jc);
+    align-items: map.get(v.$flexbox, $ai);
+}
+
+@mixin grid($cols, $rows: 'grid-rows-none') {
+    display: grid;
+    grid-template-columns: map.get(v.$grid, $cols);
+    grid-template-rows: map.get(v.$grid, $rows);
+}
+
+@mixin container($w: 'w-auto', $maxW: 'mw-none', $h: 'h-auto', $minH: 'minh-auto', $bg: 'bg-transparent') {
+    width: map.get(v.$width, $w);
+    max-width: map.get(v.$width, $maxW);
+    height: map.get(v.$height, $h);
+    min-height: map.get(v.$height, $minH);
+    background-color: map.get(v.$colors, $bg);
+}
+
+@mixin padding($inline: 'inline-0', $block: 'block-0') {
+    padding-inline: map.get(v.$padding, $inline);
+    padding-block: map.get(v.$padding, $block);
+}
+
+@mixin margin($inline: 'inline-0', $block: 'block-0') {
+    margin-inline: map.get(v.$margin, $inline);
+    margin-block: map.get(v.$margin, $block);
+}
+
+@mixin position($p, $t: 't-auto', $r: 'r-auto', $b: 'b-auto', $l: 'l-auto') {
+    position: map.get(v.$position, $p);
+    top: map.get(v.$position, $t);
+    right: map.get(v.$position, $r);
+    bottom: map.get(v.$position, $b);
+    left: map.get(v.$position, $l);
+}
+
+@mixin border($border, $radius: 'br-0') {
+    border: map.get(v.$border, $border);
+    border-radius: map.get(v.$border, $radius);
+}
+
+@mixin linearGradient($linearGradient) {
+    background: linear-gradient(map.get(v.$colors, $linearGradient));
+}
+
+@mixin boxShadow($shadow) {
+    box-shadow: map.get(v.$boxShadow, $shadow);
+}
+
+@mixin font($size, $weight: 'fw-400', $lh: 'lh-normal', $ls: 'ls-normal', $align: 'ta-left', $color) {
+    font-size: map.get(v.$font, $size);
+    font-weight: map.get(v.$font, $weight);
+    line-height: map.get(v.$font, $lh);
+    letter-spacing: map.get(v.$font, $ls);
+    text-align: map.get(v.$font, $align);
+    color: map.get(v.$colors, $color);
+}

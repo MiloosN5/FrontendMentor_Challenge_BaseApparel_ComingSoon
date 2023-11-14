@@ -1,0 +1,12 @@
+@use 'mixins' as m;
+
+.header {
+  @include m.flexbox($dir: 'row');
+  @include m.padding('section-inline--sm', 'header-block');
+}
+
+@include m.breakpoint-up('small') {
+  .header {
+    @include m.padding('section-inline--lg', 'header-block');
+  }
+}

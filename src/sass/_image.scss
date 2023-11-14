@@ -1,0 +1,12 @@
+@use 'mixins' as m;
+
+.image {
+  @include m.flexbox($dir: 'column');
+  grid-row: span 2;
+}
+
+@include m.breakpoint-up('large') {
+  .image {
+    @include m.container($h: 'w-100%', $minH: 'minh-100vh');
+  }
+}
